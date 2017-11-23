@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/Home'
-import Content from '@/Content'
-import Categorias from '@/Categorias'
+import Article from '@/Article'
+import Categorias from '@/Categories'
 import Tags from '@/Tags'
 
 Vue.use(Router)
@@ -17,8 +17,8 @@ export default new Router({
     },
     {
       path: '/postagem',
-      name: 'Content',
-      component: Content
+      name: 'Article',
+      component: Article
     },
     {
       path: '/categorias',

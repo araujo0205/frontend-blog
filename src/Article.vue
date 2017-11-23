@@ -19,6 +19,7 @@
 
 <<script>
 export default {
+  name: "article",
   data () {
       return {
           title: 'Testando algoritmos',

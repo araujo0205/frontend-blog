@@ -13,12 +13,14 @@
 
 <<script>
 export default {
+    name: 'Categories',
     data () {
         return {
             cats: [
                 {name: 'desenvolvimento', qtd: 5},
                 {name: 'nerdisses', qtd: 20}
-            ]
+            ],
+            count: 0
         }
     }
 }
