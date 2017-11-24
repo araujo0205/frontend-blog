@@ -1,11 +1,13 @@
 import { mount} from 'vue-test-utils';
 import Home from "../src/Home.vue";
 import expect from 'expect';
+import Helpers from './Helper.js';
 
 describe('Home', () => {
-    let wrapper;
+    let wrapper, h;
     beforeEach (() => {
         wrapper = mount(Home);
+        h = new Helpers(wrapper, expect);        
     });
 
     it ('total articles loaded', () => {
@@ -13,12 +15,6 @@ describe('Home', () => {
     });
 
     it ('list first item', () => {
-        see('Testando algoritmos');
+        h.see('Testando algoritmos');
     });
-
-    let see = (text, selector) => {
-        let wrap = selector ? wrapper.find(selector) : wrapper;
-    
-        expect(wrap.html()).toContain(text);
-    };
 })

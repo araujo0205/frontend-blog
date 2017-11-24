@@ -3,7 +3,7 @@
         <article>
             <header><i>#+Title:</i> {{title}}</header>
             <h2><i>#+Category:</i> {{category}}</h2>
-            <h2>
+            <h2 id='center-tags'>
                 <i>#+Tags:</i> 
                 <span v-bind:key="tag" v-for="(tag,index) in tags">
                     {{tag}}<span v-if="index+1 != tags.length">,</span>             

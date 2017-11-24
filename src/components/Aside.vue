@@ -2,24 +2,24 @@
 <aside>
     <input type="text" maxlength="256" autofocus="true" placeholder="buscar">
     <h3>/Categorias</h3>
-    <ul>
-        <li>./Desenvolvimento</li>
-        <li>./Livros</li>
-        <li>./Vida nerd</li>
+    <ul id="aside-cats">
+        <li v-for="cat in categories">
+            ./{{cat}}
+        </li>
     </ul>
 
     <h3>/tags</h3>
-        <ul>
-        <li>./banco de dados</li>
-        <li>./Android</li>
-        <li>./Symfony</li>
+    <ul id="aside-tags">
+        <li v-for="tag in tags">
+            ./{{tag}}
+        </li>
     </ul>
 
     <h3>$top</h3>
-    <ul>
-        <li>156,0 Criando banco de dados</li>
-        <li>123,1 testando mongo</li>
-        <li>123,2 e-mail</li>
+    <ul id="aside-top">
+        <li v-for="(top, index) in tops">
+            {{top.access}},{{index}} {{top.name}}
+        </li>
     </ul>
 
     <h3>/feed</h3>
@@ -39,9 +39,28 @@ import Calendar from './Calendar.vue'
 
 export default {
   name: 'aside',
-  components: {
-      'calendar-component': Calendar
-  },
+  data () {
+      return {
+        categories: [
+            "Desenvolvimento",
+            "Livros",
+            "Vida nerd"
+        ],
+        tags: [
+            "banco de dados",
+            "Android",
+            "Symfony"
+        ],
+        tops: [
+            {name: "Criando banco de dados", access: 124},
+            {name: "testando mongo", access: 78},
+            {name: "e-mail", access: 50}
+        ],
+        components: {
+            'calendar-component': Calendar
+        },
+      }
+  }
 }
 </script>
 
