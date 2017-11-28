@@ -24,7 +24,7 @@ export default {
             this.article = response.data;
         })
         .catch(e => {
-            this.errors.push(e)
+            this.errors.push(e);
         });
 	},
     data () {
