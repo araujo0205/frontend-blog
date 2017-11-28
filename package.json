@@ -12,7 +12,9 @@
     "test-watch": "mocha-webpack --webpack-config webpack.config.js --watch --require test/setup.js test/*.spec.js"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "font-awesome": "^4.7.0",
+    "marked": "^0.3.6",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },

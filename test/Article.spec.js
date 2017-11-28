@@ -24,6 +24,6 @@ describe('Article', () => {
     });
 
     it('present content', () => {
-        h.see('As vezes quando vamos estudar algo novo ficamos imaginando se esse novo conhecimento terá alguma utilidade')
+        h.see('Neste artigo demonstrarei como configurar um login por formulário')
     })
 })

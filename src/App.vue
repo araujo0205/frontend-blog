@@ -17,7 +17,7 @@ export default {
   components: {
       'nav-component': Nav,
       'aside-component': Aside      
-  },
+  }
 }
 </script>
 

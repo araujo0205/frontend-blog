@@ -4,7 +4,7 @@
             <h2 style="color:black;">/Categorias</h2>
             <ul>
                 <li v-for="cat in cats">
-                    drwxr-xr-x {{cat.qtd}} david Nov 17 23:52 {{cat.name}}
+                    drwxr-xr-x {{cat.total}} david {{cat._id}}
                 </li>
             </ul> 
         </article>
@@ -14,12 +14,19 @@
 <<script>
 export default {
     name: 'Categories',
+    created: function() {
+        var axios = require('axios');
+
+        axios.get('https://cors.now.sh/http://davidsouza.tech/skoob/blog-categories.php').then(response => {
+                this.cats = response.data;
+            })
+            .catch(e => {
+                this.errors.push(e)
+            });
+    },
     data () {
         return {
-            cats: [
-                {name: 'desenvolvimento', qtd: 5},
-                {name: 'nerdisses', qtd: 20}
-            ],
+            cats: '',
             count: 0
         }
     }

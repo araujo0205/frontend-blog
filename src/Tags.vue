@@ -4,7 +4,7 @@
             <h2 style="color:black;">/Tags</h2>
             <ul>
                 <li v-for="tag in tags">
-                    drwxr-xr-x {{tag.qtd}} david Nov 17 23:52 {{tag.name}}
+                    drwxr-xr-x {{tag.total}} david {{tag._id}}
                 </li>
             </ul> 
         </article>
@@ -13,13 +13,20 @@
 
 <<script>
 export default {
+    name: "tags",
+    created: function() {
+        var axios = require('axios');
+
+        axios.get('https://cors.now.sh/http://davidsouza.tech/skoob/blog-tags.php').then(response => {
+            this.tags = response.data;
+        })
+        .catch(e => {
+            this.errors.push(e)
+        });
+    },
     data () {
         return {
-            tags: [
-                {name: 'desenvolvimento', qtd: 5},
-                {name: 'banco de dados', qtd: 1},
-                {name: 'vue', qtd: 20}
-            ]
+            tags: ''
         }
     }
 }

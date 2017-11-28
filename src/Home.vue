@@ -9,36 +9,36 @@
                 {{tag}}<span v-if="index+1 != article.tags.length">,</span>             
             </span>
         </h3>
-        <p> {{article.content}}</p>
+        <p> {{article.content | substring }}...</p>
         <p>
-            <router-link to="postagem">continuar lendo</router-link>
+            <router-link :to="{ name: 'Article', params: { article: article._id } }">continuar lendo</router-link>
         </p>
     </article>
-    <center>--more--</center>
 </div>
 </template>
 
 <script>
 export default {
     name: 'Home',
+    created: function () {
+        var axios = require('axios');
+        axios.get('https://cors.now.sh/http://davidsouza.tech/skoob/blog-fragment.php').then(response => {
+            this.articles = response.data;
+        })
+        .catch(e => {
+            this.errors.push(e)
+        });
+	},
     data () {
         return  {
-            articles: [
-                {
-                    title: 'Testando algoritmos',
-                    category: 'desenvolvimento',
-                    tags: ['algoritmos', 'ccp'],
-                    content: "As vezes quando vamos estudar algo novo ficamos imaginando se esse novo conhecimento terá alguma utilidade. Isso também ocorre quando vamos estudar sobre algoritmos; muitas pessoas têm essa dúvida até porque nunca viram na prática a diferença de uma abordagem adequada ou comparou diversos alg...",
-                },
-                {
-                    title: 'Mongodb no Symfony',
-                    category: 'desenvolvimento',
-                    tags: ['banco de dados'],
-                    content: "Se você utiliza Symfony e está pensando em incluir o mongodb em seu projeto, nem tente ir na documentação do symfony pois ela está desatualizada. Uma alternativa seria a documentação do próprio doctrine, mas demandaria algumas adaptações. Como tive o mesmo problema que você irei compartilhar...",
-                }                
-            ]
+            articles: ''
         }
+    },
+    filters: {
+    substring: function (value) {
+      return value.substring(0,400);
     }
+  }
 }
 </script>
 

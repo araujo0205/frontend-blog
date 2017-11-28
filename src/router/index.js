@@ -16,7 +16,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/postagem',
+      path: '/a/:article',
       name: 'Article',
       component: Article
     },

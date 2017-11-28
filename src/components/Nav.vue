@@ -1,6 +1,6 @@
 <template>
     <nav>
-        <li class="selected">
+        <li>
             <router-link to="/"> <i class="fa fa-home" aria-hidden="true"> </i><span>Home</span> </router-link> 
         </li>
         <li>

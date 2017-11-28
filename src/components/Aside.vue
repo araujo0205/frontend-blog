@@ -4,21 +4,21 @@
     <h3>/Categorias</h3>
     <ul id="aside-cats">
         <li v-for="cat in categories">
-            ./{{cat}}
+            ./{{cat._id}}
         </li>
     </ul>
 
     <h3>/tags</h3>
     <ul id="aside-tags">
         <li v-for="tag in tags">
-            ./{{tag}}
+            ./{{tag._id}}
         </li>
     </ul>
 
     <h3>$top</h3>
     <ul id="aside-top">
         <li v-for="(top, index) in tops">
-            {{top.access}},{{index}} {{top.name}}
+            {{top.totalviews}},{{index}} {{top.title}}
         </li>
     </ul>
 
@@ -30,6 +30,7 @@
         <li>./github</li>
         <li>./email</li>
     </ul>
+    <p></p>
     <calendar-component/>
 </aside>
 </template>
@@ -38,29 +39,44 @@
 import Calendar from './Calendar.vue'
 
 export default {
-  name: 'aside',
-  data () {
-      return {
-        categories: [
-            "Desenvolvimento",
-            "Livros",
-            "Vida nerd"
-        ],
-        tags: [
-            "banco de dados",
-            "Android",
-            "Symfony"
-        ],
-        tops: [
-            {name: "Criando banco de dados", access: 124},
-            {name: "testando mongo", access: 78},
-            {name: "e-mail", access: 50}
-        ],
-        components: {
-            'calendar-component': Calendar
-        },
-      }
-  }
+    name: 'aside',
+    components: {
+      'calendar-component' : Calendar
+    },
+    created: function () {
+        var axios = require('axios');
+
+        axios.get('https://cors.now.sh/http://davidsouza.tech/skoob/blog-tags.php').then(response => {
+            this.tags = response.data;
+        })
+        .catch(e => {
+            this.errors.push(e)
+        });
+
+        axios.get('https://cors.now.sh/http://davidsouza.tech/skoob/blog-categories.php').then(response => {
+            this.categories = response.data;
+        })
+        .catch(e => {
+            this.errors.push(e)
+        });
+
+        axios.get('https://cors.now.sh/http://davidsouza.tech/skoob/blog-toparticles.php').then(response => {
+            this.tops = response.data;
+        })
+        .catch(e => {
+            this.errors.push(e)
+        });
+	},
+    data () {
+        return {
+            categories: '',
+            tags: '',
+            tops: '',
+            components: {
+                'calendar-component': Calendar
+            },
+        }
+    }
 }
 </script>
 
