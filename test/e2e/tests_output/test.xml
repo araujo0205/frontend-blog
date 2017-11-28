@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="1"
+            failures="0"
+            tests="1">
+
+  <testsuite name="test"
+    errors="1" failures="0" hostname="" id="" package="test" skipped="0"
+    tests="1" time="0.01000" timestamp="Tue, 28 Nov 2017 16:58:38 GMT">
+  
+    <testcase name="default e2e tests" classname="test" time="0.01000" assertions="0">
+    </testcase>
+  
+
+  
+    <system-err>
+        Error while running [Test / default e2e tests]:
+
+  TypeError: client.url(...).waitForElementVisible(...).assert.elementPresent(...).assert.containsText(...).assert.elementCount is not a function
+    at Object.default e2e tests (/home/david/Documents/vue/test-night/test/e2e/specs/test.js:14:15)
+    at Module.call (/usr/lib/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /usr/lib/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/usr/lib/node_modules/nightwatch/node_modules/q/q.js:834:54)
+    at self.promiseDispatch.done (/usr/lib/node_modules/nightwatch/node_modules/q/q.js:863:30)
+    at Promise.promise.promiseDispatch (/usr/lib/node_modules/nightwatch/node_modules/q/q.js:796:13)
+    at /usr/lib/node_modules/nightwatch/node_modules/q/q.js:556:49
+    at runSingle (/usr/lib/node_modules/nightwatch/node_modules/q/q.js:137:13)
+    at flush (/usr/lib/node_modules/nightwatch/node_modules/q/q.js:125:13)
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)
+    </system-err>
+  
+
+  
+  </testsuite>
+</testsuites>

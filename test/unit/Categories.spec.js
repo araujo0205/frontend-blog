@@ -1,5 +1,5 @@
 import { mount} from 'vue-test-utils';
-import Categories from "../src/Categories.vue";
+import Categories from '../../src/Categories.vue';
 import expect from 'expect';
 import Helpers from './Helper.js';
 import moxios from 'moxios';

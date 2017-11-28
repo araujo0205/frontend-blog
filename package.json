@@ -8,8 +8,9 @@
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "build": "node build/build.js",
-    "test": "mocha-webpack --webpack-config webpack.config.js --require test/setup.js test/*.spec.js",
-    "test-watch": "mocha-webpack --webpack-config webpack.config.js --watch --require test/setup.js test/*.spec.js"
+    "test": "mocha-webpack --webpack-config webpack.config.js --require test/unit/setup.js test/unit/*.spec.js",
+    "test-watch": "mocha-webpack --webpack-config webpack.config.js --watch --require test/unit/setup.js test/unit/*.spec.js",
+    "e2e": "node test/e2e/runner.js"
   },
   "dependencies": {
     "axios": "^0.17.1",
@@ -27,6 +28,7 @@
     "babel-preset-stage-2": "^6.22.0",
     "babel-register": "^6.22.0",
     "chalk": "^2.0.1",
+    "chromedriver": "^2.33.2",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.0",
     "eventsource-polyfill": "^0.9.6",
@@ -40,6 +42,7 @@
     "mocha": "^4.0.1",
     "mocha-webpack": "^1.0.1",
     "moxios": "^0.4.0",
+    "nightwatch": "^0.9.16",
     "node-notifier": "^5.1.2",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "ora": "^1.2.0",
@@ -47,6 +50,7 @@
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.0.8",
     "rimraf": "^2.6.0",
+    "selenium-server": "^3.7.1",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",
     "url-loader": "^0.5.8",

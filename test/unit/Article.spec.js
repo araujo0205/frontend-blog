@@ -1,5 +1,5 @@
 import { mount } from 'vue-test-utils';
-import Article from '../src/Article.vue';
+import Article from '../../src/Article.vue';
 import expect from 'expect';
 import Helpers from './Helper.js';
 import moxios from 'moxios';

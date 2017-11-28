@@ -1,5 +1,5 @@
 import { mount } from 'vue-test-utils';
-import Tags from '../src/Tags.vue';
+import Tags from '../../src/Tags.vue';
 import expect from 'expect';
 import Helpers from './Helper.js';
 import moxios from 'moxios';

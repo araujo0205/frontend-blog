@@ -1,5 +1,5 @@
 import { mount } from 'vue-test-utils';
-import Aside from "../src/components/Aside.vue";
+import Aside from '../../src/components/Aside.vue';
 import expect from 'expect';
 import Helpers from './Helper.js';
 import moxios from 'moxios';

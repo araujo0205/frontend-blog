@@ -26,7 +26,7 @@
 
     <h3>/Social</h3>
     <ul>
-        <li>./Facebook</li>
+        <li>./facebook</li>
         <li>./github</li>
         <li>./email</li>
     </ul>

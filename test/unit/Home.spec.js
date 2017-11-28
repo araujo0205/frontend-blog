@@ -1,5 +1,5 @@
 import { mount} from 'vue-test-utils';
-import Home from "../src/Home.vue";
+import Home from '../../src/Home.vue';
 import expect from 'expect';
 import Helpers from './Helper.js';
 import moxios from 'moxios';
