@@ -17,12 +17,11 @@ unit test:
     - npm run test
 
 e2e test:
-  image: ubuntu
+  image: blueimp/nightwatch
   stage: test
   script:
-    - apt-get install --no-cache npm java default-jdk
-    - npm install --progress=false
-    - npm run e2e
+    - cd test/e2e/
+    - nightwatch
   
 deploy:
   image: alpine
