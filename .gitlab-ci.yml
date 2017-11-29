@@ -25,4 +25,4 @@ deploy:
     - echo "$SSH_PRIVATE_KEY" >> ~/.ssh/id_dsa
     - chmod 600 ~/.ssh/id_dsa
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-    - rsync -av --delete dist/ myseriesc@davidsouza.tech:~/blog/
+    - scp -prv -P10428 dist/* myseriesc@davidsouza.tech:~/public_html/blog/
