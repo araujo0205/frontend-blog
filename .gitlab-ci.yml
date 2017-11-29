@@ -17,10 +17,10 @@ unit test:
     - npm run test
 
 e2e test:
-  image: alpine
+  image: ubuntu
   stage: test
   script:
-    - apk add --no-cache npm java default-jdk
+    - apt-get install --no-cache npm java default-jdk
     - npm install --progress=false
     - npm run e2e
   
