@@ -20,6 +20,7 @@ e2e test:
   image: ubuntu
   stage: test
   script:
+    - atp-get update
     - apt-get install -y npm java default-jdk
     - npm install --progress=false
     - npm run e2e
