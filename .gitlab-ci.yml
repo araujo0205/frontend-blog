@@ -17,9 +17,10 @@ unit test:
     - npm run test
 
 e2e test:
-  image: node:6
+  image: alpine
   stage: test
   script:
+    - apk add --no-cache npm java default-jdk
     - npm install --progress=false
     - npm run e2e
   
@@ -27,7 +28,7 @@ deploy:
   image: alpine
   stage: deploy
   script:
-    - apk add --no-cache rsync openssh
+    - apk add --no-cache openssh
     - mkdir -p ~/.ssh
     - echo "$SSH_PRIVATE_KEY" >> ~/.ssh/id_dsa
     - chmod 600 ~/.ssh/id_dsa
