@@ -21,7 +21,7 @@ e2e test:
   stage: test
   script:
     - apt-get update
-    - apt-get install -y npm java default-jdk
+    - apt-get install -y npm default-jdk
     - npm install --progress=false
     - npm run e2e
   
