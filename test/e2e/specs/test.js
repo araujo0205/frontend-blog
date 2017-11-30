@@ -8,9 +8,11 @@ module.exports = {
     // see nightwatch.conf.js
     const devServer = browser.globals.devServerURL;
 
-    browser.url(devServer).pause(5000);
+    browser.url(devServer).pause(7000)
+    .saveScreenshot('./test/e2e/reports/screenshot/home.png');
 
     defaultTest(browser);
+
   },
 
   'Home articles': function (browser) {
@@ -21,12 +23,15 @@ module.exports = {
     .assert.containsText('article:first-child h2','extend')
     .assert.containsText('article:first-child h3','implements')
     .assert.containsText('article:first-child a','continuar lendo')
+
   },
   
   'access article': function (browser) {
     browser
     .click('article:first-child a')
     .pause(3000) //waiting to load
+
+    .saveScreenshot('./test/e2e/reports/screenshot/article.png');
   },
 
   'Article defaults': function (browser) {
@@ -45,6 +50,8 @@ module.exports = {
     browser
     .click('nav li:nth-of-type(2) a')
     .pause(3000)
+
+    .saveScreenshot('./test/e2e/reports/screenshot/categories.png');
   },
 
   'Categories default' : function (browser) {
@@ -61,6 +68,8 @@ module.exports = {
     browser
     .click('nav li:nth-of-type(3) a')
     .pause(3000)
+
+    .saveScreenshot('./test/e2e/reports/screenshot/tags.png');
   },
 
   'Tags default' : function (browser) {
