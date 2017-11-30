@@ -23,10 +23,10 @@ e2e test:
     - apt-get update
     - apt-get -y install curl
     - curl -sL https://deb.nodesource.com/setup_8.x | bash -
-    - apt-get install -y nodejs    
+    - apt-get install -y nodejs openjdk-8-jre libgconf-2-4
     - npm install --progress=false
     - npm run e2e
-  
+  falta java e libgconf-2-4
 deploy:
   image: alpine
   stage: deploy
