@@ -20,6 +20,7 @@ e2e test:
   image: selenium/node-chrome
   stage: test
   script:
+    - apt-get -qqy install npm
     - npm install --progress=false
     - npm run e2e
   
