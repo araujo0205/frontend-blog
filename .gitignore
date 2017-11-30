@@ -14,4 +14,4 @@ yarn-error.log*
 *.sln
 
 selenium-debug.log
-test/e2e/reports/
+/test/e2e/reports/
