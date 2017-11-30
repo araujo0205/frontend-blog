@@ -41,7 +41,7 @@ export default {
     computed: {
         content: function() {
             var marked = require('marked');
-
+     
             var artigo = this.article.content.replace(/\\n/g, '\n');
             return marked(artigo); 
         }

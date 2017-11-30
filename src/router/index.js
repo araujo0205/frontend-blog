@@ -4,6 +4,7 @@ import Home from '@/Home'
 import Article from '@/Article'
 import Categorias from '@/Categories'
 import Tags from '@/Tags'
+import ArticlesFromFilter from '@/ArticlesFromFilter'
 
 Vue.use(Router)
 
@@ -26,10 +27,20 @@ export default new Router({
       component: Categorias
     },
     {
+      path: '/categoria/:name',
+      name: 'CategorieArticles',
+      component: ArticlesFromFilter
+    },
+    {
       path: '/tags',
       name: 'tags',
       component: Tags
-    }      
+    },
+    {
+      path: '/tag/:name',
+      name: 'tagArticles',
+      component: ArticlesFromFilter
+    }
   ]
 })
 

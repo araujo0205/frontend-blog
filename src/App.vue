@@ -2,7 +2,7 @@
   <div>
     <nav-component/>
     <div>
-      <router-view/>
+      <router-view :key="$route.fullPath"/>
       <aside-component/>
     </div>
   </div>

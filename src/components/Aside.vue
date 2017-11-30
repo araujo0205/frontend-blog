@@ -4,21 +4,27 @@
     <h3>/Categorias</h3>
     <ul id="aside-cats">
         <li v-for="cat in categories">
-            ./{{cat._id}}
+            <router-link :to="{ name: 'CategorieArticles', params: { name: cat._id } }"> 
+                ./{{cat._id}}
+            </router-link>
         </li>
     </ul>
 
     <h3>/tags</h3>
     <ul id="aside-tags">
         <li v-for="tag in tags">
-            ./{{tag._id}}
+            <router-link :to="{ name: 'tagArticles', params: { name: tag._id} }"> 
+                ./{{tag._id}}
+            </router-link>
         </li>
     </ul>
 
     <h3>$top</h3>
     <ul id="aside-top">
         <li v-for="(top, index) in tops">
-            {{top.totalviews}},{{index}} {{top.title}}
+            <router-link :to="{ name: 'Article', params: { article: top._id } }"> 
+                {{top.totalviews}},{{index}} {{top.title}}
+            </router-link>
         </li>
     </ul>
 
@@ -100,6 +106,11 @@ aside input {
 aside h3 {
     font-size: 20px;
     margin-bottom: 10px;
+}
+
+aside ul a {
+	text-decoration: none;
+	color: black;
 }
 @media screen and (max-width: 700px) {
     aside {
