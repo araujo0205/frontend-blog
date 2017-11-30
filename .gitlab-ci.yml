@@ -23,7 +23,7 @@ e2e test:
     - apt-get update
     - apt-get -y install curl
     - curl -sL https://deb.nodesource.com/setup_8.x | bash -
-    - apt-get install -y nodejs openjdk-8-jre libgconf-2-4
+    - apt-get install -y nodejs openjdk-8-jre libgconf-2-4 chromium-browser
     - npm install --progress=false
     - npm run e2e
 deploy:
