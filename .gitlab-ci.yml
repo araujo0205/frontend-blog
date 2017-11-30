@@ -17,10 +17,11 @@ unit test:
     - npm run test
 
 e2e test:
-  image: selenium/node-chrome
+  image: ubuntu:16.04
   stage: test
   script:
-    - su && apt-get -qqy install npm
+    - apt-get -qq update
+    - apt-get -qq install npm
     - npm install --progress=false
     - npm run e2e
   
