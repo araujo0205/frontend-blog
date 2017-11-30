@@ -20,7 +20,7 @@ e2e test:
   image: ubuntu
   stage: test
   script:
-    - apt-get update && apt-get install -y \
+    - apt-get -qq update && apt-get install -y \
       ca-certificates \
       apt-transport-https \
       openjdk-8-jre-headless \
