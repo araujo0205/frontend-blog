@@ -19,8 +19,8 @@ unit test:
 e2e test:
   image: ubuntu:16.04
   stage: test
-  script:
-    - apt-get -qq update && apt-get install -y \
+  before_script:
+      - apt-get -qq update && apt-get install -y -qq \
       ca-certificates \
       apt-transport-https \
       openjdk-8-jre-headless \
@@ -37,6 +37,7 @@ e2e test:
       && apt-get -qqy install google-chrome-unstable \
       && rm /etc/apt/sources.list.d/google-chrome.list \
       && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+  script:
     - npm install --progress=false
     - npm run e2e
   
