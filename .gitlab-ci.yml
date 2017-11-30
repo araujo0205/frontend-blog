@@ -17,11 +17,9 @@ unit test:
     - npm run test
 
 e2e test:
-  image: ubuntu
+  image: kenfehling/node-selenium-chrome
   stage: test
   script:
-    - apt-get update
-    - apt-get install -y npm default-jdk
     - npm install --progress=false
     - npm run e2e
   
