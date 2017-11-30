@@ -17,7 +17,7 @@ unit test:
     - npm run test
 
 e2e test:
-  image: kenfehling/node-selenium-chrome
+  image: selenium/standalone-chrome
   stage: test
   script:
     - npm install --progress=false
