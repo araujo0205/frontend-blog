@@ -22,11 +22,16 @@ export default {
     name: 'Home',
     created: function () {
         var axios = require('axios');
-        axios.get('https://cors.now.sh/http://davidsouza.tech/skoob/blog-fragment.php').then(response => {
+
+        this.$Progress.start();
+        axios.get(`${this.$root.apiUrl}/articles`).then(response => {
             this.articles = response.data;
+
+            this.$Progress.finish();
         })
         .catch(e => {
             this.errors.push(e)
+            this.$Progress.fail();
         });
 	},
     data () {

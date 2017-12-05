@@ -17,11 +17,15 @@ export default {
     created: function() {
         var axios = require('axios');
 
-        axios.get('https://cors.now.sh/http://davidsouza.tech/skoob/blog-categories.php').then(response => {
+        this.$root.$Progress.start();
+
+        axios.get(`${this.$root.apiUrl}/categories`).then(response => {
                 this.cats = response.data;
+                this.$Progress.finish();
             })
             .catch(e => {
                 this.errors.push(e);
+                this.$Progress.fail();
             });
     },
     data () {

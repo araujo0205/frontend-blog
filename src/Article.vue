@@ -1,6 +1,6 @@
 <<template>
     <div id="center">
-        <article>
+        <article v-if="article.title != ''">
             <header><i>#+Title:</i> {{article.title}}</header>
             <h2><i>#+Category:</i> {{article.category}}</h2>
             <h2 id='center-tags'>
@@ -9,7 +9,6 @@
                     {{tag}}<span v-if="index+1 != article.tags.length">,</span>             
                 </span>
             </h2>    
-            <h3><i>#+Date:</i> {{article.date}} </h3>
             <div v-html="content"></div>
         </article>
     </div>
@@ -20,11 +19,16 @@ export default {
     name: "article",
     created: function () {
         var axios = require('axios');
-        axios.get('https://cors.now.sh/http://davidsouza.tech/skoob/blog-article.php?slug='+this.$route.params.article).then(response => {
+
+        this.$root.$Progress.start();
+        axios.get(`${this.$root.apiUrl}/article?slug=${this.$route.params.article}`).then(response => {
             this.article = response.data;
+
+            this.$root.$Progress.finish();
         })
         .catch(e => {
             this.errors.push(e);
+            this.$Progress.fail();
         });
 	},
     data () {

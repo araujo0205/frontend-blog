@@ -1,6 +1,5 @@
 <template>
 <aside>
-    <input type="text" maxlength="256" autofocus="true" placeholder="buscar">
     <h3>/Categorias</h3>
     <ul id="aside-cats">
         <li v-for="cat in categories">
@@ -51,27 +50,30 @@ export default {
     },
     created: function () {
         var axios = require('axios');
+        var that = this;
 
-        axios.get('https://cors.now.sh/http://davidsouza.tech/skoob/blog-tags.php').then(response => {
-            this.tags = response.data;
-        })
-        .catch(e => {
-            this.errors.push(e)
-        });
+        function getTags() {
+            return axios.get(`${that.$root.apiUrl}/tags`);
+        }
 
-        axios.get('https://cors.now.sh/http://davidsouza.tech/skoob/blog-categories.php').then(response => {
-            this.categories = response.data;
-        })
-        .catch(e => {
-            this.errors.push(e)
-        });
+        function getCategories() {
+            return axios.get(`${that.$root.apiUrl}/categories`);
+        }
 
-        axios.get('https://cors.now.sh/http://davidsouza.tech/skoob/blog-toparticles.php').then(response => {
-            this.tops = response.data;
-        })
-        .catch(e => {
-            this.errors.push(e)
-        });
+        function getTopArticles() {
+            return axios.get(`${that.$root.apiUrl}/toparticles`);
+        }
+        this.$Progress.start();
+ 
+        axios.all([getTags(), getCategories(),getTopArticles()])
+            .then(axios.spread(function (tags,categories,topArticles) {
+                that.tags = tags.data;
+                that.categories = categories.data;
+                that.tops = topArticles.data;
+
+                that.$Progress.finish();
+            }))
+            .catch(error => console.log(error));
 	},
     data () {
         return {

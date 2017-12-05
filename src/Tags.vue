@@ -17,11 +17,16 @@ export default {
     created: function() {
         var axios = require('axios');
 
-        axios.get('https://cors.now.sh/http://davidsouza.tech/skoob/blog-tags.php').then(response => {
+        this.$root.$Progress.start();
+
+        axios.get(`${this.$root.apiUrl}/tags`).then(response => {
             this.tags = response.data;
+            this.$Progress.finish();
+            
         })
         .catch(e => {
             this.errors.push(e)
+            this.$Progress.fail();
         });
     },
     data () {

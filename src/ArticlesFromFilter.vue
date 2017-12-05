@@ -33,11 +33,15 @@ export default {
                 key = 'category'
         }
 
-        axios.get(`https://cors.now.sh/http://davidsouza.tech/skoob/blog-tag-articles.php?${key}=${value}`).then(response => {
+        this.$root.$Progress.start();
+        axios.get(`${this.$root.apiUrl}/filter?${key}=${value}`).then(response => {
             this.articles = response.data;
+
+            this.$root.$Progress.finish();
         })
         .catch(e => {
             this.errors.push(e)
+            this.$Progress.fail();
         });
 	},
     data () {
