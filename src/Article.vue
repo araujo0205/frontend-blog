@@ -9,6 +9,7 @@
                     {{tag}}<span v-if="index+1 != article.tags.length">,</span>             
                 </span>
             </h2>    
+            <h3><i>#+Date:</i> {{article.date}} </h3>
             <div v-html="content"></div>
         </article>
     </div>

@@ -4,7 +4,10 @@
             <h2 style="color:black;">/Categorias</h2>
             <ul>
                 <li v-for="cat in cats">
-                    drwxr-xr-x {{cat.total}} david {{cat._id}}
+                    <router-link :to="{ name: 'CategorieArticles', params: { name: cat._id } }"> 
+                        drwxr-xr-x {{cat.total}} david {{cat._id}}
+                    </router-link>
+                    
                 </li>
             </ul> 
         </article>
@@ -72,6 +75,11 @@ export default {
 }
 #center p {
     text-align: justify;
+}
+
+#center article ul li a {
+	text-decoration: none;
+	color: black;
 }
 
 @media screen and (max-width: 700px) {

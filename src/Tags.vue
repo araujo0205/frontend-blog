@@ -4,7 +4,10 @@
             <h2 style="color:black;">/Tags</h2>
             <ul>
                 <li v-for="tag in tags">
-                    drwxr-xr-x {{tag.total}} david {{tag._id}}
+                    <router-link :to="{ name: 'tagArticles', params: { name: tag._id} }"> 
+                        drwxr-xr-x {{tag.total}} david {{tag._id}}
+                    </router-link>
+                    
                 </li>
             </ul> 
         </article>
@@ -88,6 +91,11 @@ header i {
 }
 #center p {
     text-align: justify;
+}
+
+#center article ul li a {
+	text-decoration: none;
+	color: black;
 }
 
 @media screen and (max-width: 700px) {
