@@ -34,12 +34,38 @@ export default {
       year: 2017,
       months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
       daysWeeks: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
-      events: [
-        {date:10, title:"post1"}, 
-        {date:10, title:"quantos eventos"}, 
-        {date: 12, title: "outro título"},
-        {date: 26, title: "mais um título"}
-        ]
+      events: []
+    }
+  },
+  created: function () {
+    var axios = require('axios');
+
+    this.$root.$Progress.start();
+    axios.get(`${this.$root.apiUrl}/articlesdate?month=${this.month}&year=${this.year}`).then(response => {
+      this.events = response.data;
+
+      this.$root.$Progress.finish();
+    })
+    .catch(e => {
+      this.errors.push(e);
+      this.$Progress.fail();
+    });
+  },
+  watch: {
+    month: function (newMonth) {
+      this.events = [];
+      var axios = require('axios');
+
+      this.$root.$Progress.start();
+      axios.get(`${this.$root.apiUrl}/articlesdate?month=${newMonth}&year=${this.year}`).then(response => {
+        this.events = response.data;
+
+        this.$root.$Progress.finish();
+      })
+      .catch(e => {
+        this.errors.push(e);
+        this.$Progress.fail();
+      });      
     }
   },
   computed: {
@@ -105,7 +131,7 @@ export default {
 
           if(daytemp.location == "in") {
             day.events = this.events.reduce(function (events, event) {
-              if (event.date == daytemp.day) {
+              if (event.day == daytemp.day) {
                 return events.concat(event.title);
               } else {
                 return events;
@@ -158,7 +184,7 @@ export default {
       var eventsdiv = object.currentTarget.parentNode.parentNode.lastChild;
       if(eventsdiv.style.display != 'block' ) {
         var events = this.events.reduce(function (events, event) {
-              if (event.date == object.currentTarget.id) {
+              if (event.day == object.currentTarget.id) {
                 return events.concat(event.title);
               } else {
                 return events;
@@ -201,14 +227,18 @@ export default {
     letter-spacing: 3px;
 }
 
+.month .next, .month .prev {
+      padding-top: 10px;
+      line-height: 0px;
+      width: 50px;
+}
+
 .month .prev {
     float: left;
-    padding-top: 10px;
 }
 
 .month .next {
     float: right;
-    padding-top: 10px;
 }
 
 .weekdays {
@@ -248,5 +278,9 @@ export default {
 }
 .events {
   display: none;
+  text-align: center;
+}
+.events li {
+  margin: 3px;
 }
 </style>
