@@ -184,17 +184,19 @@ export default {
       var eventsdiv = object.currentTarget.parentNode.parentNode.lastChild;
       if(eventsdiv.style.display != 'block' ) {
         var events = this.events.reduce(function (events, event) {
-              if (event.day == object.currentTarget.id) {
-                return events.concat(event.title);
-              } else {
-                return events;
-              }
-            }, []);
+          if (event.day == object.currentTarget.id) {
+            var eventObj = {id:event._id, name:event.title};
+            return events.concat(eventObj);
+          } else {
+            return events;
+          }
+        }, []);
 
         var html = "<ul>";
         events.forEach(function(event) {
-          html += "<li>" + event +"</li>";  
+          html += "<li><a href='/a/"+ event.id + "'>"+ event.name +"</a></li>";  
         });
+        html += "</ul>";
 
         eventsdiv.innerHTML = html;
 

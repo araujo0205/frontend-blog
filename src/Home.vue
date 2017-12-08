@@ -27,6 +27,13 @@ export default {
         axios.get(`${this.$root.apiUrl}/articles`).then(response => {
             this.articles = response.data;
 
+            this.articles.forEach(function(article) {
+                article.content = article.content.replace(/\\n/g, '\n');
+                article.content = article.content.replace(/\([^)]*\)/g, ''); //Remover links
+                article.content = article.content.replace(/(\[|\]|`|#)/g, ''); //Remover caracteres do markdown
+                //console.log(article);
+            });
+
             this.$Progress.finish();
         })
         .catch(e => {

@@ -36,7 +36,12 @@ export default {
         this.$root.$Progress.start();
         axios.get(`${this.$root.apiUrl}/filter?${key}=${value}`).then(response => {
             this.articles = response.data;
-
+            this.articles.forEach(function(article) {
+                article.content = article.content.replace(/\\n/g, '\n');
+                article.content = article.content.replace(/\([^)]*\)/g, ''); //Remover links
+                article.content = article.content.replace(/(\[|\]|`|#)/g, ''); //Remover caracteres do markdown
+                //console.log(article);
+            });
             this.$root.$Progress.finish();
         })
         .catch(e => {
