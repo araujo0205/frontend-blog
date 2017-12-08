@@ -36,6 +36,9 @@ export default {
         return {
             tags: ''
         }
+    },
+    metaInfo: {
+      title: 'Tags'
     }
 }
 </script>

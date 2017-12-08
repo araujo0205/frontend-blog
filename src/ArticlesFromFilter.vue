@@ -54,6 +54,11 @@ export default {
             articles: ''
         }
     },
+    metaInfo () {
+        return {
+            title: this.$route.params.name
+        }
+    },
     filters: {
     substring: function (value) {
       return value.substring(0,400);

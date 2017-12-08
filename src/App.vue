@@ -18,6 +18,12 @@ export default {
   components: {
       'nav-component': Nav,
       'aside-component': Aside      
+  },
+  metaInfo: {
+      // if no subcomponents specify a metaInfo.title, this title will be used
+      title: 'Home',
+      // all titles will be injected into this template
+      titleTemplate: '%s | david blog'
   }
 }
 </script>

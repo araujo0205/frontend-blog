@@ -27,13 +27,14 @@
         </li>
     </ul>
 
-    <h3>/feed</h3>
+    <h3><a href='/feed'>/feed</a></h3>
 
     <h3>/Social</h3>
     <ul>
-        <li>./facebook</li>
-        <li>./github</li>
-        <li>./email</li>
+        <li><a href="https://www.linkedin.com/in/david-souza-712873107" target="_blank">./linkedin</a></li>
+        <li><a href="https://github.com/araujo0205/" target="_blank">./github</a></li>
+        <li><a href="mailto:eu@davidsouza.tech" target="_top">./email</a></li>
+        
     </ul>
     <p></p>
     <calendar-component/>
@@ -90,7 +91,7 @@ export default {
 
 <style>
 aside {
-    margin-top: 50px;
+    margin-top: 30px;
     margin-left: 10px;
     width: 25%;
     float: left;
@@ -110,7 +111,7 @@ aside h3 {
     margin-bottom: 10px;
 }
 
-aside ul a {
+aside a {
 	text-decoration: none;
 	color: black;
 }

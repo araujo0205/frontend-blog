@@ -35,12 +35,17 @@ export default {
     data () {
       return {
           article: {
-              title: '',
+              title: 'Home',
               category: '',
               tags: '',
               date : '',
               content: ''
           }
+        }
+    },
+    metaInfo () {
+        return {
+            title: this.article.title
         }
     },
     computed: {

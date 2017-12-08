@@ -36,6 +36,9 @@ export default {
             cats: '',
             count: 0
         }
+    },
+    metaInfo: {
+      title: 'Categorias'
     }
 }
 </script>
